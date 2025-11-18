@@ -98,7 +98,7 @@ export const signIn = async (req, res) => {
 
 export const getProfileUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).select("-hashedPassword");
+    const user = await User.findById(req.userId).select("-hashedPassword");
     if (!user) {
       return res.status(400).json({
         message: "Không tìm thấy người dùng",
