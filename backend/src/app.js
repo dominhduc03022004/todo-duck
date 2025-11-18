@@ -1,15 +1,24 @@
 import express from "express";
-import mongoose from "mongoose";
+import morgan from "morgan";
+import dotenv from "dotenv";
+import cors from "cors";
+import { connectDB } from "./config/db";
+import routerAuth from "./routes/auth";
+
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
+app.use(morgan("dev"));
 
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173" }));
 
-mongoose
-  .connect("mongodb://localhost:27017/kiemtra_nodejs_fa25")
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Could not connect to MongoDB:", err));
+app.use("/api/auth", routerAuth);
 
-app.listen(3000, () => {
-  console.log(`Server is running on port http://localhost:3000`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port http://localhost:${PORT}`);
+  });
 });
