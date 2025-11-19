@@ -24,8 +24,14 @@ export const checkAuth = async (req, res, next) => {
         message: "Token Không hợp lệ hoặc hết hạn",
       });
     }
-    const user = await User.findById(decoded.userId);
-    req.userId = decoded.id;
+    const user = await User.findById(decoded.id);
+    if(!user) {
+      return res.status(400).json({
+        message: "User không tồn tại"
+      });
+    }
+    req.userId = user._id;
+    req.user = user
     next();
   } catch (error) {
     return res.json({

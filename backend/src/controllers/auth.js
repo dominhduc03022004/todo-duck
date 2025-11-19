@@ -19,7 +19,7 @@ export const signUp = async (req, res) => {
       });
     }
 
-    const { email, firstName, lastName, password, phone } = req.body;
+    const { email, firstName, lastName, phone } = req.body;
 
     // kiem tra ton tai
     const userExist = await User.findOne({ email: req.body.email });
