@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./config/db";
 import routerAuth from "./routes/auth";
+import routerTask from "./routes/task";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:5173" }));
 
 app.use("/api/auth", routerAuth);
+app.use("/api/tasks", routerTask)
 
 connectDB().then(() => {
   app.listen(PORT, () => {
