@@ -1,8 +1,17 @@
+import { Route, Routes } from "react-router";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+
 function App() {
   return (
-    <>
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
-    </>
+    <Routes>
+        <Route path="/login" Component={Login}/>
+        <Route path="/register" Component={Register}/>
+
+        {/* protected */}
+        <Route path="/" Component={Home}/>
+    </Routes>
   );
 }
 
