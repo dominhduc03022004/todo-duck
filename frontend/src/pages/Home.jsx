@@ -8,6 +8,7 @@ import TaskListPagination from "@/components/TaskListPagination";
 import React from "react";
 
 function Home() {
+  
   return (
     <div className="min-h-screen w-full relative bg-black">
       {/* X Organizations Black Background with Top Glow */}{" "}
