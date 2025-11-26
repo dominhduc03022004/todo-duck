@@ -55,7 +55,7 @@ export function LoginForm({ onSubmit, className, ...props }) {
                 </div>
                 <Input
                   id="hashedPassword"
-                  type="hashedPassword"
+                  type="password"
                   {...register("hashedPassword")}
                 />
                 {errors.hashedPassword && (

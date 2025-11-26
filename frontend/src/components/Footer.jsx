@@ -1,24 +1,24 @@
 import React from 'react';
 
-function Footer({completedTasksCount = 0, activeTasksCount = 0}) {
+function Footer({completeCount = 0, activeCount = 0}) {
     return (
         <div>
-            {completedTasksCount + activeTasksCount > 0 && (
+            {completeCount + activeCount > 0 && (
                 <div className='text-center'>
                     <p className='text-sm text-white'>
                         {
-                            completedTasksCount > 0 && (
+                            completeCount > 0 && (
                                 <>
-                                    Con vợ được quá nhở hoàn thành được {completedTasksCount} việc rồi
+                                    Con vợ được quá nhở hoàn thành được {completeCount} việc rồi
                                     {
-                                        activeTasksCount > 0 && `, còn ${activeTasksCount} việc nữa thôi. Nốt đê!`
+                                        activeCount > 0 && `, còn ${activeCount} việc nữa thôi. Nốt đê!`
                                     }
                                 </>
                             )
                         }
-                        {completedTasksCount === 0 && activeTasksCount > 0 && (
+                        {completeCount === 0 && activeCount > 0 && (
                             <>
-                                Có {activeTasksCount} việc đấy, bỏ điện thoại xuống bắt đầu làm đê!
+                                Có {activeCount} việc đấy, bỏ điện thoại xuống bắt đầu làm đê!
                             </>
                         )}
                     </p>

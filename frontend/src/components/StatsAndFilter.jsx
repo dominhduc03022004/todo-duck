@@ -5,19 +5,20 @@ import { Button } from "./ui/button";
 import { Filter } from "lucide-react";
 
 function StatsAndFilter({
-  completedTaskCount = 0,
-  activeTaskCount = 0,
+  completeCount = 0,
+  activeCount = 0,
   filter = "all",
+  setFilter,
 }) {
   return (
     <div className="flex flex-col gap-4 md:flex-row md:justify-between">
       {/* thong ke */}
       <div className="flex gap-3">
-        <Badge className="bg-white/50">
-          {activeTaskCount} {FilterType.active}
+        <Badge className="bg-[#435663] text-[#FFF8D4]">
+          {activeCount} {FilterType.active}
         </Badge>
-        <Badge className="bg-white/50">
-          {completedTaskCount} {FilterType.completed}
+        <Badge className="bg-[#435663] text-[#E3E3E3]">
+          {completeCount} {FilterType.completed}
         </Badge>
       </div>
 
@@ -28,7 +29,8 @@ function StatsAndFilter({
             key={type}
             variant={filter === type ? "secondary" : "default"}
             size="sm"
-            className="capitalize"
+            className="capitalize cursor-pointer"
+            onClick={() => setFilter(type)}
           >
             <Filter className="size-4" />
             {FilterType[type]}

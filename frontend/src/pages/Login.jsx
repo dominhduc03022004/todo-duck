@@ -1,14 +1,15 @@
 import { LoginForm } from "@/components/login-form";
-import api from "@/lib/axios";
+import { useAuth } from "@/context/authContext";
 import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
 function Login() {
+  const {handleLogin} = useAuth();
   const navigate = useNavigate();
   const mutation = useMutation({
-    mutationFn: (data) => api.post('/api/auth/signin', data),
+    mutationFn: ({email, hashedPassword}) => handleLogin(email, hashedPassword),
     onError: (err) => {
       console.log(err);
       
@@ -16,6 +17,7 @@ function Login() {
     },
     onSuccess: () => {
       toast.success("Đăng nhập thành công")
+      
       navigate('/')
     }
   })
